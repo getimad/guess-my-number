@@ -1,2 +1,7 @@
 @import url(colors.css);
 @import url(fonts.css);
+
+body {
+    background-color: var(--main-background-color);
+    font-family: Roboto Regular;
+}
