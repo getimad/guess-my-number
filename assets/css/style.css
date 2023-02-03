@@ -1,7 +1,176 @@
 @import url(colors.css);
 @import url(fonts.css);
 
+
+* {
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+*:focus {
+    outline: none !important;
+}
+
 body {
     background-color: var(--main-background-color);
     font-family: Roboto Regular;
+}
+
+main {
+    display: flex;
+    justify-content: space-around;
+    margin: 5%;
+}
+
+
+/*************
+ * Main Card *
+ *************/
+
+.main-card {
+    background-color: var(--main-primary-1-color);
+    color: var(--main-light-color);
+    height: 500px;
+    width: 753px;
+    border-radius: 20px;
+    box-shadow: 2px 2px 100px var(--main-primary-1-color);
+}
+
+.title-card {
+    background-color: var(--main-secondary-color);
+    color: var(--main-primary-1-color);
+    max-height: 40px;
+    padding: 30px;
+    border-radius: 20px 20px 0px 0px;
+    display: flex;
+    justify-content: space-between;
+}
+
+#try-again-img {
+    height: 24px;
+    width: 24px;
+    padding: 10px;
+    background-color: var(--main-primary-1-color);
+    border-radius: 5px;
+    transition: filter 0.3s;
+    filter: brightness(100%);
+}
+
+#try-again-img:hover {
+    filter: brightness(120%);
+    transition: filter 0.15s;
+}
+
+.main-card .body-card {
+    display: flex;
+    justify-content: space-between;
+    padding: 30px;
+}
+
+.inputs {
+    height: 100%;
+    width: 300px;
+}
+
+.inputs > div {
+    margin-bottom: 20px;
+}
+
+input {
+    font-family: "Roboto Bold";
+    margin-top: 7px;
+    text-align: center;
+    font-size: 16px;
+    color: var(--main-primary-1-color);
+    border-radius: 5px;
+    box-sizing: border-box;
+
+    box-shadow: 0 0 4px rgba(0,0,0,0.1);
+    transition: .3s box-shadow;
+}
+
+input:hover {
+    box-shadow: 0 0 4px rgba(0,0,0,0.5);
+}
+
+#username {
+    height: 52px;
+    width: 100%;
+}
+
+.body-number {
+    display: flex;
+    justify-content: space-between;
+}
+
+#number {
+    height: 52px;
+    width: 171px;
+
+}
+
+#check-btn {
+	background: var(--main-secondary-color);
+    height: 52px;
+    width: 120px;
+	cursor: pointer;
+    color: var(--main-primary-1-color);
+    font-weight: bold;
+}
+
+.note {
+    font-size: 12px;
+}
+
+ul > li {
+    margin-top: 7px;
+    margin-left: 25px;
+}
+
+/* Vertical Border */
+.border {
+    border: 1px solid var(--main-secondary-color);
+    opacity: 20%;
+}
+
+/* left side */
+.score {
+    height: 350px;
+    width: 350px;
+}
+
+.result {
+    font-family: "Roboto Bold";
+    font-size: 128px;
+    text-align: center;
+    padding: 50px;
+    margin: 30px 50px 50px 50px;
+    border-radius: 100%;
+    background-color: var(--main-primary-2-color);
+}
+
+
+/******************
+ * Dashborad Card *
+ ******************/
+
+.dashboard-card {
+    background-color: var(--main-primary-1-color);
+    color: var(--main-light-color);
+    height: 500px;
+    width: 386px;
+    border-radius: 20px;
+    box-shadow: 2px 2px 100px var(--main-primary-1-color);
+}
+
+.dashboard-table {
+    width: 100%;
+    border-collapse: collapse;
+
+}
+
+tr, th, td {
+    border: 1px solid var(--main-secondary-color);
+    padding: 10px;
 }

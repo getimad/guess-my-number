@@ -14,7 +14,63 @@
         
     </header>
     <main>
+        <div class="main-card">
+            <div class="title-card">
+                <h1>Guess My Number</h1>
+                <img src="assets/images/icons/try-again.png" alt="Try again button" id="try-again-img">
+            </div>
+            <div class="body-card">
+                <div class="inputs">
+                    <div class="player-username">
+                        <label for="username">Your Username:</label>
+                        <br/>
+                        <input type="text" name="username" id="username" maxlength="12" autocomplete="off" oninput="this.value=this.value.match('[a-zA-Z_]+')">
+                    </div>
+                    <div class="player-number">
+                        <label for="number">Your Number:</label>
+                        <br/>
+                        <div class="body-number">
+                            <input type="text" name="number" id="number" oninput="this.value=this.value.match('[0-9]+')" maxlength="2">
+                            <input type="button" value="Check" id="check-btn">
+                        </div>
+                    </div>
+                    <div class="note">
+                        <u>Note:</u>
+                        <ul>
+                            <li>Guess the number between 0 and 99.</li>
+                            <li>If your guess is wrong your score will decrees 1 point.</li>
+                            <li>Click the “Try Again” Button to rest the boxes.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="border"></div>
+                <div class="score">
+                    <p>Your Score:</p>
+                    <div class="result">20</div>
+                </div>
+            </div>
+        </div>
 
+        <!-- Dashboard -->
+        <div class="dashboard-card">
+            <div class="title-card">
+                <h1>Dashboard</h1>
+            </div>
+            <div class="body-card">
+                <table class="dashboard-table">
+                    <thead>
+                        <tr>
+                            <th>N°</th>
+                            <th>Username</th>
+                            <th>Score</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Add the elements by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </main>
 
     <!-- Scripts -->
