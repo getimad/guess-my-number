@@ -47,7 +47,7 @@ main {
     justify-content: space-between;
 }
 
-#try-again-img {
+#try-again {
     height: 24px;
     width: 24px;
     padding: 10px;
@@ -57,7 +57,7 @@ main {
     filter: brightness(100%);
 }
 
-#try-again-img:hover {
+#try-again:hover {
     filter: brightness(120%);
     transition: filter 0.15s;
 }
@@ -99,24 +99,30 @@ input:hover {
     width: 100%;
 }
 
-.body-number {
+.body-guess {
     display: flex;
     justify-content: space-between;
 }
 
-#number {
+#guess {
     height: 52px;
     width: 171px;
 
 }
 
-#check-btn {
+#check {
 	background: var(--main-secondary-color);
     height: 52px;
     width: 120px;
 	cursor: pointer;
     color: var(--main-primary-1-color);
     font-weight: bold;
+}
+
+input:disabled, #check:disabled {
+    filter: brightness(80%);
+    box-shadow: none;
+    cursor: not-allowed;
 }
 
 .note {
