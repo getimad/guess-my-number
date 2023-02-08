@@ -30,7 +30,7 @@
                         <label for="guess">Your Guess:</label>
                         <br/>
                         <div class="body-guess">
-                            <input type="text" name="guess" id="guess" oninput="this.value=this.value.match('[0-9]+')" maxlength="2">
+                            <input type="text" name="guess" id="guess" oninput="this.value=this.value.match('[0-9]+')" maxlength="2" autocomplete="off">
                             <input type="button" value="Check" id="check">
                         </div>
                     </div>
@@ -74,6 +74,6 @@
     </main>
 
     <!-- Scripts -->
-    <script src="scripts/main.js"></script>
+    <script type="module" src="scripts/main.js"></script>
 </body>
 </html>

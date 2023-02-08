@@ -1,43 +1,29 @@
-const DEFAULTSCORE = 20;
+import { DEFAULTSCORE } from "./constants.js";
+import { Player } from "./classes/player.js";
 
-class Player {
-    constructor(username) {
-        if (!username) {
-            const id = Math.trunc(Math.random() * 9999);
-            username = "Player" + id;
-        }
 
-        this.username = username;
-        this.score = DEFAULTSCORE;
-        this.magicNumber = Math.trunc(Math.random() * 99);
-    }
+// Functions
+const displayResult = (messageKey = "empty", player = undefined) => {
+    const messages = new Map(
+        [["empty", {content:"Please enter your guess number.", bagroundColor:"#A6BB8D", fontColor:"#FF980E"}],    
+        ["default", {content:"Guess my number", bagroundColor:"#A6BB8D", fontColor:"#3C6255"}],
+        ["small", {content:"Your guess is small", bagroundColor:"#FF980E", fontColor:"#FFFFFF"}],
+        ["verySmall", {content:"Your guess is very small", bagroundColor:"#D3212C", fontColor:"#FFFFFF"}],
+        ["large", {content:"Your guess is large", bagroundColor:"#FF980E", fontColor:"#FFFFFF"}],
+        ["veryLarge", {content:"Your guess is very large", bagroundColor:"#D3212C", fontColor:"#FFFFFF"}],
+        ["correct", {content:"Congratulation! 🎉 Your guess is correct!", bagroundColor:"#006B3D", fontColor:"#FFFFFF"}],
+        ["lost", {content:"You lost 😭", bagroundColor:"#A6BB8D", fontColor:"#D3212C"}]]
+    );
 
-    isWon(guess) {
-        return guess == this.magicNumber;
-    }
+    document.querySelector(".result").textContent = player ? player.score : DEFAULTSCORE;
 
-    static displayResult(messageKey = "empty", player = undefined) {
-        const messages = new Map(
-            [["empty", {content:"Please enter your guess number.", bagroundColor:"#A6BB8D", fontColor:"#FF980E"}],    
-            ["default", {content:"Guess my number", bagroundColor:"#A6BB8D", fontColor:"#3C6255"}],
-            ["small", {content:"Your guess is small", bagroundColor:"#FF980E", fontColor:"#FFFFFF"}],
-            ["verySmall", {content:"Your guess is very small", bagroundColor:"#D3212C", fontColor:"#FFFFFF"}],
-            ["large", {content:"Your guess is large", bagroundColor:"#FF980E", fontColor:"#FFFFFF"}],
-            ["veryLarge", {content:"Your guess is very large", bagroundColor:"#D3212C", fontColor:"#FFFFFF"}],
-            ["correct", {content:"Congratulation! 🎉 Your guess is correct!", bagroundColor:"#006B3D", fontColor:"#FFFFFF"}],
-            ["lost", {content:"You lost 😭", bagroundColor:"#A6BB8D", fontColor:"#D3212C"}]]
-        );
+    const obj = messages.get(messageKey);
 
-        document.querySelector(".result").textContent = player ? player.score : DEFAULTSCORE;
+    document.querySelector("#message").textContent = obj.content;
+    document.querySelector("#message").style.color = obj.fontColor;
 
-        const obj = messages.get(messageKey);
-
-        document.querySelector("#message").textContent = obj.content;
-        document.querySelector("#message").style.color = obj.fontColor;
-
-        document.querySelector(".title-card").style.background = obj.bagroundColor;
-    };
-}
+    document.querySelector(".title-card").style.background = obj.bagroundColor;
+};
 
 const disableInputs = (behavoir, ...arr) => {
     arr.forEach(id => {
@@ -46,22 +32,23 @@ const disableInputs = (behavoir, ...arr) => {
 };
 
 
+// Event Listeners
 let player = undefined;
 
 document.querySelector("#check").addEventListener("click", () => {
     if (!player) {
-        const username = document.querySelector("#username").value;
+        const username = document.querySelector("#username");
 
-        player = new Player(username);
+        player = new Player(username.value);
 
-        document.querySelector("#username").value = player.username;
+        username.value = player.username;
         disableInputs(true, "#username");
     }
 
     const guess = document.querySelector("#guess").value;
 
     if (!guess) {
-        Player.displayResult();
+        displayResult();
         return;
     }
     
@@ -69,7 +56,8 @@ document.querySelector("#check").addEventListener("click", () => {
 
     if (player.isWon(guess)) {
         /**
-         * Add the player object to the dashboard <<Local Storage>>.
+         * Add the player object to the Local Storage.
+         * Show the resutl from local storage to the table.
          */
 
         messageKey = "correct";
@@ -97,7 +85,7 @@ document.querySelector("#check").addEventListener("click", () => {
 
     player.score--;
 
-    Player.displayResult(messageKey, player);
+    displayResult(messageKey, player);
 });
 
 document.querySelector("#try-again").addEventListener("click", () => {
@@ -108,5 +96,5 @@ document.querySelector("#try-again").addEventListener("click", () => {
     document.querySelector("#guess").value = "";  // Guess [INPUT]
 
     disableInputs(false, "#username", "#guess", "#check")  // Turn the inputs on
-    Player.displayResult("default"); // Display the default state
+    displayResult("default"); // Display the default state
 });
