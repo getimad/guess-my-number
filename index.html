@@ -24,7 +24,7 @@
                     <div class="player-username">
                         <label for="username">Your Username:</label>
                         <br/>
-                        <input type="text" name="username" id="username" maxlength="12" autocomplete="off" oninput="this.value=this.value.match('[a-zA-Z_]+')">
+                        <input type="text" name="username" id="username" maxlength="12" autocomplete="off" oninput="this.value=this.value.match('[a-zA-Z]+')">
                     </div>
                     <div class="player-guess">
                         <label for="guess">Your Guess:</label>
@@ -65,7 +65,7 @@
                             <th>Score</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="data">
                         <!-- Add the elements by JavaScript -->
                     </tbody>
                 </table>
