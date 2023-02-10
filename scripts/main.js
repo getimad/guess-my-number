@@ -45,23 +45,23 @@ const disableInputs = (behavoir, ...arr) => {
 const addPlayer = (player, data) => {
     if (!data.length) {
         data.push(player);
-    }
-
-    let isExist = false
-    for (let i = 0; i < data.length; i++) {
-        if (player.username == data[i].username && player.score > data[i].score) {
-            isExist = true;
-            break;
-        }
-    }
-
-    if (isExist) {
-        data[i] = player;
     } else {
+        let isExist = false
         for (let i = 0; i < data.length; i++) {
-            if (player.score >= data[i].score) {
-                data.splice(i, 0, player);
+            if (player.username == data[i].username && player.score > data[i].score) {
+                isExist = true;
                 break;
+            }
+        }
+
+        if (isExist) {
+            data[i] = player;
+        } else {
+            for (let i = 0; i < data.length; i++) {
+                if (player.score >= data[i].score) {
+                    data.splice(i, 0, player);
+                    break;
+                }
             }
         }
     }
