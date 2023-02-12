@@ -46,17 +46,19 @@ const addPlayer = (player, data) => {
     if (!data.length) {
         data.push(player);
     } else {
-        let isExist = false
+        let isExist = false;
+        let index = -1;
         for (let i = 0; i < data.length; i++) {
-            if (player.username == data[i].username && player.score > data[i].score) {
+            if (player.username == data[i].username && player.score >= data[i].score) {
                 isExist = true;
-                break;
+                index = i;
             }
         }
 
         if (isExist) {
-            data[i] = player;
+            data[index] = player;
         } else {
+            // You can improve this function using O(log n)
             for (let i = 0; i < data.length; i++) {
                 if (player.score >= data[i].score) {
                     data.splice(i, 0, player);
