@@ -4,8 +4,8 @@ import { DEFAULTSCORE } from "../constants.js"
 export class Player {
     constructor(username) {
         if (!username) {
-            const id = Math.trunc(Math.random() * 9999);
-            username = "Player" + id;
+            const id = Math.trunc(Math.random() * 999);
+            username = "player" + id;
         }
 
         this.username = username;
