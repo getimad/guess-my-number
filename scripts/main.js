@@ -1,5 +1,10 @@
-import { DEFAULTSCORE } from "./constants.js";
+// It is very complex to write vanila javascript for new projects.
+// Use Blazor, React or Angular for HAPPY LIFE.
+
+
+import { DEFAULTSCORE, AROUNDNUMBER } from "./constants.js";
 import { Player } from "./classes/player.js";
+import { Players } from "./classes/players.js";
 
 
 // *** Functions ***
@@ -42,38 +47,7 @@ const disableInputs = (behavoir, ...arr) => {
     });
 };
 
-const addPlayer = (player, data) => {
-    if (!data.length) {
-        data.push(player);
-    } else {
-        let isExist = false;
-        let index = -1;
-        for (let i = 0; i < data.length; i++) {
-            if (player.username == data[i].username && player.score >= data[i].score) {
-                isExist = true;
-                index = i;
-            }
-        }
-
-        if (isExist) {
-            data[index] = player;
-        } else {
-            // You can improve this function using O(log n)
-            for (let i = 0; i < data.length; i++) {
-                if (player.score >= data[i].score) {
-                    data.splice(i, 0, player);
-                    break;
-                }
-            }
-        }
-    }
-
-    return data.slice(0, 7);
-};
-
-
-// Get data from local storage and display it.
-displayDashboard(JSON.parse(localStorage.getItem("players") || "[]"))
+displayDashboard(Players.getAll());
 
 // *** Event Listeners ***
 let player = undefined;
@@ -85,7 +59,6 @@ document.querySelector("#check").addEventListener("click", () => {
 
         player = new Player(username.value);
 
-        username.value = player.username;
         disableInputs(true, "#username");
     }
 
@@ -98,24 +71,14 @@ document.querySelector("#check").addEventListener("click", () => {
     
     let messageKey = "default";
 
-    if (player.isWon(guess)) {
-        /**
-         * Add the player object to the Local Storage.
-         * Display the result to the dashboard.
-         */
-
+    if (guess == player.magicNumber) {
         disableInputs(true, "#guess", "#check");
 
-        const data = addPlayer(player, JSON.parse(localStorage.getItem("players") || "[]"));
-
-        localStorage.setItem("players", JSON.stringify(data));
-
-        displayDashboard(data);
+        Players.add(player);
+        displayDashboard(Players.getAll());
 
         messageKey = "correct";
     } else if (player.score > 1) {     
-        const AROUNDNUMBER = 20;
-        
         if (guess > player.magicNumber) {
             if (guess > player.magicNumber + AROUNDNUMBER) {
                 messageKey = "veryLarge";
@@ -142,13 +105,8 @@ document.querySelector("#check").addEventListener("click", () => {
     displayResult(messageKey, player);
 });
 
-// Try Agrain Button
+// Reset All Inputs
 document.querySelector("#try-again").addEventListener("click", () => {
-    /**
-     * Reset the player object.
-     * Reset the page by removing the value of the inputs and enable them again.
-     */
-
     player = undefined;
 
     document.querySelector(".result").textContent = DEFAULTSCORE;

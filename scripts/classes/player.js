@@ -12,8 +12,4 @@ export class Player {
         this.score = DEFAULTSCORE;
         this.magicNumber = Math.trunc(Math.random() * 99);
     }
-
-    isWon(guess) {
-        return guess == this.magicNumber;
-    }
 }
