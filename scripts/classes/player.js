@@ -5,7 +5,7 @@ export class Player {
     constructor(username) {
         if (!username) {
             const id = Math.trunc(Math.random() * 9999);
-            username = "Player" + id;
+            username = "player_" + id;
         }
 
         this.username = username;

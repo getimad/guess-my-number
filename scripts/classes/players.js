@@ -1,9 +1,3 @@
-/**
- * I separete the implementation details of list of players
- * from the main.js
- */
-
-
 import { LENGTHDASHBOARD } from "../constants.js";
 
 
