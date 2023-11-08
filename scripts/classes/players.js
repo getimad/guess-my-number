@@ -11,13 +11,17 @@ export class Players {
         } else {
             let len = data.length;
 
-            if (len < LENGTHDASHBOARD) {
+            if (len === 0) {
                 data.push(player);
             } else {
                 for (let i = 0; i < len; i++) {
                     if (data[i].score <= player.score) {
                         data.splice(i, 0, player);
-                        data.pop();
+
+                        if (len + 1 > LENGTHDASHBOARD) {
+                            data.pop();
+                        }
+                        console.log(data);
                         break;
                     }
                 }
