@@ -1,0 +1,21 @@
+{
+  "name": "guess-my-number",
+  "version": "1.0.0",
+  "description": "Guess My Number is a fun and simple game where you have to guess the number that the robot has chosen between 0 and 99.",
+  "scripts": {
+    "start": "live-server --port=8080"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/getimad/guess-my-number.git"
+  },
+  "author": "Imad Ez-zahi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/getimad/guess-my-number/issues"
+  },
+  "homepage": "https://github.com/getimad/guess-my-number#readme",
+  "dependencies": {
+    "live-server": "^1.1.0"
+  }
+}
