@@ -29,7 +29,9 @@ npm start
 
 ## How to play
 
-![Screenshot of the home page](https://github.com/getimad/guess-my-number/blob/main/assets/images/screenshots/home-page.jpg?raw=true)
+<picture>
+  <img alt="A screenshot of the home page" src="https://github.com/getimad/guess-my-number/blob/main/assets/images/screenshots/home-page.jpg?raw=true" />
+</picture>
 
 1. Enter your username.  
 *Note: If you leave it empty, the code will generate a random name for you, such as player_1111.*
