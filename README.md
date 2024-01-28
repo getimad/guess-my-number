@@ -58,6 +58,8 @@ This game is licensed under the MIT License.
 
 ## Contact
 
-If you have any questions, feedback, or suggestions, you can contact me at <getimad.pro@outlook.com>. You can also follow me on [X](https://twitter.com/getimad).
+If you have any questions, feel free to reach out to me at:
 
-I hope you enjoy playing **Guess My Number**! 😊
+<a href="https://www.linkedin.com/in/getimad/" target="_blank">
+  <img alt="Static Badge" src="https://img.shields.io/badge/LinkedIn-blue?style=for-the-badge&logo=linkedin">
+</a>
